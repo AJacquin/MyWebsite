@@ -8,6 +8,7 @@ const PROFILE = {
 } as const;
 
 const NAV_LINKS = [
+  { href: "/resume", label: "CV" },
   { href: "/projects", label: "Projets" },
   { href: "/hub", label: "Serveurs" }
 ] as const;
