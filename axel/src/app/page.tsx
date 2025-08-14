@@ -2,70 +2,90 @@ import Image from "next/image";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 
+// Configuration statique pour éviter la recompilation
+const PROFILE = {
+  name: "Axel Jacquin",
+  title: "Ingénieur Logiciel & FPGA",
+  description: "Passionné par le développement embarqué et web. Je construis des solutions innovantes en combinant hardware et software.",
+  avatar: "/avatar.svg"
+} as const;
+
+const LINKS = [
+  { href: "/hub", label: "Mes Services", variant: "primary" as const },
+  { href: "/projects", label: "Projets", variant: "secondary" as const },
+  { href: "https://github.com/AJacquin", label: "GitHub", variant: "primary" as const },
+  { href: "/CV_Axel_Jacquin.pdf", label: "CV", variant: "secondary" as const, external: true as const }
+] as const;
+
+const TECHNOLOGIES = [
+  "Verilog", "SystemVerilog", "C++", "Python", "Next.js", "TailwindCSS"
+] as const;
+
+// Classes CSS statiques pour optimiser la compilation
+const STYLES = {
+  button: {
+    base: "rounded-full px-6 py-2 transition-colors",
+    primary: "bg-slate-900 hover:bg-slate-600 text-slate-200 dark:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-900",
+    secondary: "border bg-slate-200 hover:bg-slate-300 border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-200"
+  },
+  tag: "px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200"
+} as const;
+
 export default function Home() {
   return (
     <PageLayout>
-        {/* Hero Section */}
-        <div className="flex flex-col items-center text-center">
-          <Image
-            src="/avatar.png"
-            alt="Axel Jacquin"
-            width={160}
-            height={160}
-            priority
-          />
-          <div>
-            <h1 className="text-4xl font-bold mb-4">Axel Jacquin</h1>
-            <h2 className="text-xl text-foreground/80">Ingénieur Logiciel & FPGA</h2>
-          </div>
-          <p className="max-w-2xl text-foreground/70 text-lg">
-            Passionné par le développement embarqué et web. Je construis des solutions 
-            innovantes en combinant hardware et software.
-          </p>
+      {/* Hero Section */}
+      <div className="flex flex-col items-center text-center space-y-6">
+        <Image
+          src={PROFILE.avatar}
+          alt={PROFILE.name}
+          width={160}
+          height={160}
+          priority
+        />
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold">{PROFILE.name}</h1>
+          <h2 className="text-xl text-foreground/80">{PROFILE.title}</h2>
         </div>
+        <p className="max-w-2xl space-y-2 text-foreground/70 text-lg">
+          {PROFILE.description}
+        </p>
+      </div>
 
-        {/* Quick Links */}
-        <div className="flex gap-4 flex-wrap justify-center">
-          <Link 
-            href="/hub" 
-            className="rounded-full px-6 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 dark:bg-slate-600 dark:hover:bg-slate-700 dark:text-slate-900 transition-colors"
-          >
-            Mes Services
-          </Link>
-          <Link 
-            href="/projects" 
-            className="rounded-full px-6 py-2 border bg-slate-200 hover:bg-slate-300 border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-200 transition-colors"
-          >
-            Projets
-          </Link>
-          <Link
-            href="https://github.com/AJacquin"
-            className="rounded-full px-6 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 dark:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-900 transition-colors"
-          >
-            GitHub
-          </Link>
-          <a 
-            href="/CV_Axel_Jacquin.pdf" 
-            className="rounded-full px-6 py-2 border bg-slate-200 hover:bg-slate-300 border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-200 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CV
-          </a>
-        </div>
+      {/* Quick Links */}
+      <div className="flex gap-4 flex-wrap justify-center">
+        {LINKS.map((link) => {
+          const className = `${STYLES.button.base} ${STYLES.button[link.variant]}`;
+          
+          return "external" in link ? (
+            <a
+              key={link.href}
+              href={link.href}
+              className={className}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link key={link.href} href={link.href} className={className}>
+              {link.label}
+            </Link>
+          );
+        })}
+      </div>
 
-        {/* Technologies */}
-        <div className="mt-12">
-          <h3 className="text-center text-lg font-semibold mb-6">Technologies</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">Verilog</span>
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">SystemVerilog</span>
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">C++</span>
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">Python</span>
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">Next.js</span>
-            <span className="px-3 py-1 rounded-full text-sm bg-slate-200 border-slate-300 text-slate-900 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">TailwindCSS</span>
-          </div>
+      {/* Technologies */}
+      <div className="mt-12 space-y-6">
+        <h3 className="text-center text-lg font-semibold">Technologies</h3>
+        <div className="flex flex-wrap justify-center gap-4">
+          {TECHNOLOGIES.map((tech) => (
+            <span key={tech} className={STYLES.tag}>
+              {tech}
+            </span>
+          ))}
         </div>
+      </div>
     </PageLayout>
   );
 }
