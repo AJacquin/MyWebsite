@@ -95,24 +95,32 @@ export default function CVPortfolio() {
 
   const diplomas = [
     {
-      year: "2020",
-      text: "Diplôme d’ingénieur, Systèmes d’imagerie et électronique · Télécom Saint‑Étienne",
+      period: "2020",
+      school: "Télécom Saint‑Étienne",
+      diploma: "Diplôme d’ingénieur",
+      speciality: "Systèmes d’imagerie et électronique",
       logoUrl: "/logos/tse.png",
     },
     {
-      year: "2020",
-      text: "Master EEEA, Électronique, énergie électrique et automatisation · École Centrale de Lyon",
+      period: "2020",
+      school: "École Centrale de Lyon",
+      text: "Master",
+      speciality: "Électronique, énergie électrique et automatisation",
       logoUrl: "/logos/ecl.png",
     },
     {
-      year: "2017",
-      text: "DUT GEII, Génie électrique et informatique industrielle · IUT de Saint‑Étienne",
-      logoUrl: "/logos/iut.png",
+      period: "2017",
+      school: "Télécom Saint‑Étienne",
+      diploma: "Diplôme Universitaire (DU)",
+      speciality: "Cycle initial en Technologies de l’information",
+      logoUrl: "/logos/tse.png",
     },
     {
-      year: "2017",
-      text: "DU CITISE, Cycle initial en technologies de l’information · Télécom Saint‑Étienne",
-      logoUrl: "/logos/tse.png",
+      period: "2017",
+      school: "IUT de Saint‑Étienne",
+      diploma: "Diplôme Universitaire de Technologie (DUT)",
+      speciality: "Génie électrique et informatique industrielle",
+      logoUrl: "/logos/iut.png",
     },
   ];
 
@@ -132,6 +140,14 @@ export default function CVPortfolio() {
                 </div>
               </div>
 
+              {/* Contact */}
+              <ul className="mt-4 text-sm">
+                <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><span>105 cours Fauriel, 42100 Saint‑Étienne</span></li>
+                <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="tel:+33640350125" className="hover:underline">06.40.35.01.25</a></li>
+                <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="mailto:axel.c.e.jacquin@gmail.com" className="hover:underline">axel.c.e.jacquin@gmail.com</a></li>
+                <li className="flex items-start gap-2"><Globe className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="http://axel.jacquin.duckdns.org" className="hover:underline">axel.jacquin.duckdns.org</a></li>
+              </ul>
+
               {/* Socials */}
               <div className="mt-4 flex items-center gap-3 text-neutral-600">
                 <a href="https://github.com/AJacquin" className="inline-flex items-center gap-1 hover:text-black transition">
@@ -142,13 +158,6 @@ export default function CVPortfolio() {
                   <Linkedin className="h-4 w-4" /> <span className="text-sm">axeljacquin</span>
                 </a>
               </div>
-              {/* Contact */}
-              <ul className="mt-4 text-sm">
-                <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><span>105 cours Fauriel, 42100 Saint‑Étienne</span></li>
-                <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="tel:+33640350125" className="hover:underline">06.40.35.01.25</a></li>
-                <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="mailto:axel.c.e.jacquin@gmail.com" className="hover:underline">axel.c.e.jacquin@gmail.com</a></li>
-                <li className="flex items-start gap-2"><Globe className="h-4 w-4 mt-0.5 text-[var(--accent-2)]" /><a href="http://axel.jacquin.duckdns.org" className="hover:underline">axel.jacquin.duckdns.org</a></li>
-              </ul>
             </motion.div>
 
             {/* Skills */}
@@ -221,6 +230,7 @@ export default function CVPortfolio() {
               <div className="relative">
                 {/* Ligne verticale */}
                 <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent)]/40 via-neutral-300 to-[var(--ring)]/40" />
+                {/* Liste des expériences */}
                 <ul className="space-y-4">
                   {experiences.map((e, idx) => (
                     <li key={idx} className="relative pl-10 break-inside-avoid">
@@ -251,7 +261,7 @@ export default function CVPortfolio() {
                           <span className="text-sm text-neutral-500">{e.period}</span>
                         </div>
                         <p className="mt-3 text-[0.95rem] leading-relaxed">{e.summary}</p>
-                        <p className="mt-2 text-sm text-neutral-600"><span className="font-medium">Tech</span> : {e.tech}</p>
+                        <p className="mt-2 text-sm text-neutral-600">{e.tech}</p>
                       </motion.div>
                     </li>
                   ))}
@@ -262,7 +272,46 @@ export default function CVPortfolio() {
             {/* Diplomas */}
             <section className="space-y-6">
               <h3 className="text-lg font-semibold uppercase tracking-wider text-neutral-500">Diplômes</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="relative">
+                {/* Ligne verticale */}
+                <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent)]/40 via-neutral-300 to-[var(--ring)]/40" />
+                {/* Liste des diplômes */}
+                <ul className="space-y-4">
+                  {diplomas.map((d, idx) => (
+                    <li key={idx} className="relative pl-10 break-inside-avoid">
+                      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full ring-4 ring-white bg-[var(--ring)] shadow" />
+                      <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.4, delay: idx * 0.05 }}
+                        className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm hover:shadow-md transition print:shadow-none"
+                      >
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <div className="flex items-center gap-3">
+                            <div className="h-9 w-9 rounded-lg grid place-items-center overflow-hidden bg-transparent">
+                              <Image
+                                src={d.logoUrl}
+                                alt={d.school}
+                                width={36}
+                                height={36}
+                                className="object-contain h-9 w-9"
+                              />
+                            </div>
+                            <div>
+                              <p className="text-sm text-neutral-600">{d.school}</p>
+                            </div>
+                          </div>
+                          <span className="text-sm text-neutral-500">{d.period}</span>
+                        </div>
+                        <p className="mt-3 text-[0.95rem] leading-relaxed">{d.diploma}</p>
+                        <p className="mt-2 text-sm text-neutral-600">{d.speciality}</p>
+                      </motion.div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* <div className="grid sm:grid-cols-2 gap-4">
                 {diplomas.map((d, idx) => (
                   <motion.div
                     key={idx}
@@ -278,7 +327,7 @@ export default function CVPortfolio() {
                     <p className="mt-3 leading-relaxed">{d.text}</p>
                   </motion.div>
                 ))}
-              </div>
+              </div> */}
             </section>
           </main>
         </div>
