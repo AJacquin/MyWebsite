@@ -23,24 +23,24 @@ const STYLES = {
   link: "font-medium hover:underline hover:underline-offset-4 transition-colors"
 } as const;
 
-export default function Navbar() {
+export default function Navbar(hideOnPrint?: boolean) {
   return (
-    <nav className={STYLES.nav}>
+    <nav className={hideOnPrint ? `${STYLES.nav} print:hidden` : STYLES.nav}>
       <div className={STYLES.container}>
         <Link href="/" className={STYLES.logo}>
-          <Image 
-            src={PROFILE.avatar} 
-            alt={`${PROFILE.name} Logo`} 
-            width={36} 
-            height={36} 
+          <Image
+            src={PROFILE.avatar}
+            alt={`${PROFILE.name} Logo`}
+            width={36}
+            height={36}
           />
           <span className={STYLES.logoText}>{PROFILE.name}</span>
         </Link>
         <div className={STYLES.nav_links}>
           {NAV_LINKS.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href} 
+            <Link
+              key={link.href}
+              href={link.href}
               className={STYLES.link}
             >
               {link.label}

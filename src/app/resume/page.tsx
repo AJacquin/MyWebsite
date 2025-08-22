@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
-
 import { motion } from "framer-motion";
 import {
   Github,
@@ -16,8 +15,24 @@ import {
   Music2,
   Puzzle,
   Dumbbell,
-  Mountain,
+  Printer,
 } from "lucide-react";
+
+function PrintButton() {
+  const handlePrint = () => {
+    window.print();
+  };
+
+  return (
+    <button
+      onClick={handlePrint}
+      className="fixed bottom-4 right-4 px-4 py-2 rounded-lg bg-blue-600 text-white shadow hover:bg-blue-700 flex items-center gap-2 print:hidden"
+    >
+      <Printer className="h-4 w-4" />
+      Imprimer
+    </button>
+  );
+}
 
 export default function CVPortfolio() {
   const skills = {
@@ -47,8 +62,8 @@ export default function CVPortfolio() {
       company: "AEM MU-TEST",
       location: "Saint-Jean-Bonnefonds",
       summary:
-        "Architecture FPGA, développement, simulation, validation. Logiciel embarqué, serveur de tests, caractérisation, planification carte électronique pour Machines de tests de composants électroniques (ATE).",
-      tech: "FPGA Xilinx, PICmicro, Verilog, UVM, Python, cocotb, C, C++, Java, Hg, Planning",
+        "Architecture FPGA, développement, simulation, validation. Logiciel embarqué, serveur de tests, caractérisation, planification carte électronique pour Machines de tests de composants électroniques.",
+      tech: "FPGA Xilinx, PICmicro, Verilog, UVM, cocotb, Python, C, C++, Hg, Gestion de projet",
       logoUrl: "/logos/aem.png",
     },
     {
@@ -77,7 +92,7 @@ export default function CVPortfolio() {
       company: "Dublin Institute of Technology",
       location: "Dublin",
       summary:
-        "Scanner Bluetooth (BLE) pour outil de thèse, vulgarisation domotique pour seniors.",
+        "Scanner Bluetooth Low-Energy pour thèse de sociologie.",
       tech: "Raspberry Pi, Python, Linux, Anglais",
       logoUrl: "/logos/dit.jpg",
     },
@@ -88,7 +103,7 @@ export default function CVPortfolio() {
       location: "Veauche",
       summary:
         "Banc de test pour machines de formage de bouteilles en verre.",
-      tech: "API (Telemecanique), Ladder, électrotechnique, mécanique, maintenance",
+      tech: "Automate Schneider, Ladder, électrotechnique, mécanique, maintenance",
       logoUrl: "/logos/oi.png",
     },
   ];
@@ -125,14 +140,14 @@ export default function CVPortfolio() {
   ];
 
   return (
-    <PageLayout>
-      <div className="min-h-screen w-full bg-neutral-50 text-neutral-900 dark:bg-slate-900 dark:text-slate-200 print:bg-white print:text-black [--accent:#0f172a] [--accent-2:#312e81] [--ring:#1d4ed8]">
-        {/* Container grid preserved for print */}
-        <div className="mx-auto max-w-6xl p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 print:gap-6 print:p-6 print:max-w-[210mm] print:[-webkit-print-color-adjust:exact] print:[print-color-adjust:exact] dark:bg-slate-900">
+    <PageLayout hideOnPrint>
+      <PrintButton />
+      <div className="cv-wrapper min-h-screen w-full bg-neutral-50 text-neutral-900 dark:bg-slate-900 dark:text-slate-200 [--accent:#0f172a] [--accent-2:#312e81] [--ring:#1d4ed8]">        {/* Container grid preserved for print */}
+        <div className="mx-auto max-w-6xl p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 print:grid-cols-12 print:gap-6 print:p-6 print:max-w-[210mm] print:h-[297mm] print:[-webkit-print-color-adjust:exact] print:[print-color-adjust:exact] dark:bg-slate-900">
           {/* SIDEBAR */}
-          <aside className="md:col-span-4 lg:col-span-3 rounded-2xl overflow-hidden shadow-sm print:shadow-none border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 print:bg-white flex flex-col h-full">
+          <aside className="md:col-span-4 lg:col-span-3 print:col-span-4 rounded-2xl overflow-hidden shadow-sm border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 flex flex-col h-full">
             {/* Name + role */}
-            <motion.div initial={{ opacity: 0, y: -8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 border-b border-neutral-200 dark:border-slate-700">
+            <motion.div initial={{ opacity: 0, y: -8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="px-3 py-6 border-b border-neutral-200 dark:border-slate-700">
               <div className="flex items-center gap-4">
                 <div>
                   <h1 className="text-xl font-bold leading-tight">Axel Jacquin</h1>
@@ -161,12 +176,12 @@ export default function CVPortfolio() {
             </motion.div>
 
             {/* Skills */}
-            <section className="mt-4 px-6 pb-6 dark:bg-slate-800">
+            <section className="mt-4 px-6 pb-4 dark:bg-slate-800">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Code className="h-4 w-4 dark:text-slate-200" /> Compétences</h2>
               {Object.entries(skills).map(([group, items]) => (
-                <div key={group} className="mb-3">
-                  <div className="text-xs font-semibold text-neutral-500 dark:text-slate-300 mb-2">{group}</div>
-                  <div className="flex flex-wrap gap-2">
+                <div key={group} className="mb-2">
+                  <div className="text-xs font-semibold text-neutral-500 dark:text-slate-300 mb-1">{group}</div>
+                  <div className="flex flex-wrap justify-center gap-2">
                     {items.map((s, i) => (
                       <motion.span
                         key={`${group}-${s}`}
@@ -185,9 +200,9 @@ export default function CVPortfolio() {
             </section>
 
             {/* Languages */}
-            <section className="px-6 pb-6 dark:bg-slate-800">
+            <section className="px-6 pb-4 dark:bg-slate-800">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Languages className="h-4 w-4 dark:text-slate-200" /> Langues</h2>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {languages.map((lng) => (
                   <li key={lng.label}>
                     <div className="flex items-center justify-between text-sm">
@@ -211,57 +226,58 @@ export default function CVPortfolio() {
             </section>
 
             {/* Hobbies */}
-            <section className="px-6 pb-8 dark:bg-slate-800 flex-1" style={{ minHeight: "1px" }}>
+            <section className="px-6 pb-6 dark:bg-slate-800 flex-1" style={{ minHeight: "1px" }}>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Cpu className="h-4 w-4 dark:text-slate-200" /> Centres d'intérêt</h2>
-              <div className="grid grid-cols-2 gap-3 text-sm">
-                <div className="flex items-center gap-2 p-2 rounded-lg border border-neutral-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:shadow-sm transition text-neutral-900 dark:text-slate-200"><Music2 className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Piano, MAO</div>
-                <div className="flex items-center gap-2 p-2 rounded-lg border border-neutral-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:shadow-sm transition text-neutral-900 dark:text-slate-200"><Puzzle className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Rubik’s Cube</div>
-                <div className="flex items-center gap-2 p-2 rounded-lg border border-neutral-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:shadow-sm transition text-neutral-900 dark:text-slate-200"><Dumbbell className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Tennis, Course</div>
-                <div className="flex items-center gap-2 p-2 rounded-lg border border-neutral-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:shadow-sm transition text-neutral-900 dark:text-slate-200"><Mountain className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Escalade, Judo</div>
+              <div className="flex flex-wrap justify-center gap-2">
+                <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Dumbbell className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Tennis, Trail, Escalade</span>
+                <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Music2 className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Piano, Production</span>
+                <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Puzzle className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Rubik’s Cube, Robotique</span>
               </div>
             </section>
           </aside>
 
           {/* MAIN */}
-          <main className="md:col-span-8 lg:col-span-9 space-y-10 dark:bg-slate-900">
+          <main className="md:col-span-8 lg:col-span-9 print:col-span-8 space-y-2 dark:bg-slate-900">
             {/* Experiences */}
-            <section className="space-y-6">
-              <h3 className="text-xl font-bold uppercase tracking-wider text-neutral-900 dark:text-slate-200">Expériences</h3>
+            <section className="space-y-2">
+              <h3 className="text-xl font-bold uppercase tracking-wider text-neutral-900 dark:text-slate-200 print:hidden">Expériences</h3>
               <div className="relative">
                 {/* Ligne verticale */}
-                <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-300 dark:bg-slate-700" />
+                <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-300 dark:bg-slate-700 print:hidden" />
                 {/* Liste des expériences */}
-                <ul className="space-y-4">
+                <ul className="space-y-2">
                   {experiences.map((e, idx) => (
-                    <li key={idx} className="relative pl-10 break-inside-avoid">
-                      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200" />
+                    <li key={idx} className="relative pl-10 break-inside-avoid print:pl-0">
+                      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200 print:hidden" />
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.4, delay: idx * 0.05 }}
-                        className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-4 shadow-sm hover:shadow-md transition print:shadow-none"
+                        className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-2 shadow-sm hover:shadow-md transition"
                       >
                         <div className="flex flex-wrap items-baseline justify-between gap-2 text-neutral-900 dark:text-slate-100">
-                          <div className="flex items-center gap-3">
+                          <div className="flex w-full items-center gap-3">
                             <div className="h-9 w-9 rounded-lg grid place-items-center overflow-hidden bg-transparent">
                               <Image
                                 src={e.logoUrl}
                                 alt={e.company}
-                                width={36}
-                                height={36}
-                                className="object-contain h-9 w-9"
+                                width={28}
+                                height={28}
+                                className="object-contain h-7 w-7"
                               />
                             </div>
-                            <div>
-                              <h4 className="font-semibold leading-tight">{e.role}</h4>
+                            <div className="flex-1">
+                              <div className="flex flex-row items-baseline w-full">
+                                <h4 className="font-semibold leading-tight flex-1">{e.role}</h4>
+                                <span className="text-sm text-neutral-500 dark:text-slate-200 text-right min-w-0">{e.period}</span>
+                              </div>
                               <p className="text-sm text-neutral-600 dark:text-slate-200">{e.company} · {e.location}</p>
                             </div>
                           </div>
-                          <span className="text-sm text-neutral-500 dark:text-slate-200">{e.period}</span>
                         </div>
-                        <p className="mt-3 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100">{e.summary}</p>
-                        <p className="mt-2 text-sm text-neutral-600 dark:text-slate-300">{e.tech}</p>
+                        <p className="mt-1 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100">{e.summary}</p>
+                        <p className="mt-1 text-sm text-neutral-600 dark:text-slate-300">{e.tech}</p>
                       </motion.div>
                     </li>
                   ))}
@@ -270,42 +286,44 @@ export default function CVPortfolio() {
             </section>
 
             {/* Education */}
-            <section className="space-y-6">
+            <section className="space-y-1">
               <h3 className="text-xl font-bold uppercase tracking-wider text-neutral-900 dark:text-slate-200">Formation</h3>
               <div className="relative">
                 {/* Ligne verticale */}
-                <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-300 dark:bg-slate-700" />
+                <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-300 dark:bg-slate-700 print:hidden" />
                 {/* Liste des diplômes */}
-                <ul className="space-y-4">
+                <ul className="space-y-2">
                   {diplomas.map((d, idx) => (
-                    <li key={idx} className="relative pl-10 break-inside-avoid">
-                      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200" />
+                    <li key={idx} className="relative pl-10 break-inside-avoid print:pl-0">
+                      <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200 print:hidden" />
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.4, delay: idx * 0.05 }}
-                        className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-4 shadow-sm hover:shadow-md transition print:shadow-none"
+                        className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-2 shadow-sm hover:shadow-md transition"
                       >
                         <div className="flex flex-wrap items-baseline justify-between gap-2 text-neutral-900 dark:text-slate-100">
-                          <div className="flex items-center gap-3">
+                          <div className="flex w-full items-center gap-3">
                             <div className="h-9 w-9 rounded-lg grid place-items-center overflow-hidden bg-transparent">
                               <Image
                                 src={d.logoUrl}
                                 alt={d.school}
-                                width={36}
-                                height={36}
-                                className="object-contain h-9 w-9"
+                                width={28}
+                                height={28}
+                                className="object-contain h-7 w-7"
                               />
                             </div>
-                            <div>
-                              <h4 className="font-semibold leading-tight">{d.diploma}</h4>
+                            <div className="flex-1">
+                              <div className="flex flex-row items-baseline w-full">
+                                <h4 className="font-semibold leading-tight flex-1">{d.diploma}</h4>
+                                <span className="text-sm text-neutral-500 dark:text-slate-200 text-right min-w-0">{d.period}</span>
+                              </div>
                               <p className="text-sm text-neutral-600 dark:text-slate-200">{d.school}</p>
                             </div>
                           </div>
-                          <span className="text-sm text-neutral-500 dark:text-slate-200">{d.period}</span>
                         </div>
-                        <p className="mt-3 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100">{d.speciality}</p>
+                        <p className="mt-1 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100">{d.speciality}</p>
                       </motion.div>
                     </li>
                   ))}
@@ -315,6 +333,14 @@ export default function CVPortfolio() {
           </main>
         </div>
       </div>
+      <style jsx global>{`
+        @media print {
+          .cv-content {
+            display: grid !important;
+            grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+          }
+        }
+      `}</style>
     </PageLayout>
   );
 }

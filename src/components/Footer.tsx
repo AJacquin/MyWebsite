@@ -17,23 +17,23 @@ const STYLES = {
   link: "text-sm hover:underline transition-colors"
 } as const;
 
-export default function Footer() {
+export default function Footer(hideOnPrint?: boolean) {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer className={STYLES.footer}>
+    <footer className={hideOnPrint ? `${STYLES.footer} print:hidden` : STYLES.footer}>
       <div className={STYLES.container}>
         {FOOTER_LINKS.map((link) => (
-          <Link 
-            key={link.href} 
-            href={link.href} 
+          <Link
+            key={link.href}
+            href={link.href}
             className={STYLES.link}
           >
             {link.label}
           </Link>
         ))}
-        <a 
-          href={PROFILE.website} 
+        <a
+          href={PROFILE.website}
           className={STYLES.link}
           target="_blank"
           rel="noopener noreferrer"
