@@ -57,13 +57,13 @@ export default function CVPortfolio() {
 
   const experiences = [
     {
-      period: "2021 – aujourd'hui",
+      period: "2021 –",
       role: "Ingénieur électronique numérique",
       company: "AEM MU-TEST",
       location: "Saint-Jean-Bonnefonds",
       summary:
         "Architecture FPGA, développement, simulation, validation. Logiciel embarqué, serveur de tests, caractérisation, planification carte électronique pour Machines de tests de composants électroniques.",
-      tech: "FPGA Xilinx, PICmicro, Verilog, UVM, cocotb, Python, C, C++, Hg, Gestion de projet",
+      tech: "FPGA Xilinx, PICmicro, Verilog, UVM, cocotb, Python, C, C++, Java, Hg, Gestion de projet",
       logoUrl: "/logos/aem.png",
     },
     {
@@ -228,7 +228,7 @@ export default function CVPortfolio() {
             <section className="px-6 pb-6 dark:bg-slate-800 flex-1" style={{ minHeight: "1px" }}>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Cpu className="h-4 w-4 dark:text-slate-200" /> Centres d'intérêt</h2>
               <div className="flex flex-wrap justify-center gap-2">
-                <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Dumbbell className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Tennis, Trail, Escalade</span>
+                <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Dumbbell className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Tennis, Escalade, Judo, Course à pied</span>
                 <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Music2 className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Piano, Production</span>
                 <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Puzzle className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Rubik’s Cube, Robotique</span>
               </div>
@@ -274,8 +274,8 @@ export default function CVPortfolio() {
                             </div>
                           </div>
                         </div>
-                        <p className="mt-1 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100">{e.summary}</p>
-                        <p className="mt-1 text-sm text-neutral-600 dark:text-slate-300">{e.tech}</p>
+                          <p className="mt-1 text-[0.95rem] leading-relaxed text-neutral-900 dark:text-slate-100 text-justify">{e.summary}</p>
+                        <p className="mt-1 text-sm text-neutral-600 dark:text-slate-300 text-justify">{e.tech}</p>
                       </motion.div>
                     </li>
                   ))}
