@@ -2,6 +2,8 @@ import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 
 export default function Projets() {
+  // TODO: Remplacer par vos vrais services
+  const services: { name: string; url: string; logo: string; description: string }[] = [];
 
   return (
     <PageLayout>

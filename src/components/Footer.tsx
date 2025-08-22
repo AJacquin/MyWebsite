@@ -17,7 +17,8 @@ const STYLES = {
   link: "text-sm hover:underline transition-colors"
 } as const;
 
-export default function Footer(hideOnPrint?: boolean) {
+type FooterProps = { hideOnPrint?: boolean };
+export default function Footer({ hideOnPrint }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (

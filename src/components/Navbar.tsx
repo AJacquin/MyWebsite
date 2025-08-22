@@ -23,7 +23,8 @@ const STYLES = {
   link: "font-medium hover:underline hover:underline-offset-4 transition-colors"
 } as const;
 
-export default function Navbar(hideOnPrint?: boolean) {
+type NavbarProps = { hideOnPrint?: boolean };
+export default function Navbar({ hideOnPrint }: NavbarProps) {
   return (
     <nav className={hideOnPrint ? `${STYLES.nav} print:hidden` : STYLES.nav}>
       <div className={STYLES.container}>

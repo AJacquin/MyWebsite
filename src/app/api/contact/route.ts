@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       text: message,
     });
     return NextResponse.json({ ok: true });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ ok: false, error: "Erreur d'envoi" }, { status: 500 });
   }
 }

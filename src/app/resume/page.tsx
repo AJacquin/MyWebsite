@@ -226,7 +226,7 @@ export default function CVPortfolio() {
 
             {/* Hobbies */}
             <section className="px-6 pb-6 dark:bg-slate-800 flex-1" style={{ minHeight: "1px" }}>
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Cpu className="h-4 w-4 dark:text-slate-200" /> Centres d'intérêt</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-200 mb-3 flex items-center gap-2"><Cpu className="h-4 w-4 dark:text-slate-200" /> Centres d&apos;intérêt</h2>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Dumbbell className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Tennis, Escalade, Judo, Course à pied</span>
                 <span className="flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition text-neutral-900 dark:text-slate-200"><Music2 className="h-4 w-4 text-[var(--accent-2)] dark:text-slate-200" /> Piano, Production</span>
