@@ -10,13 +10,6 @@ const PROFILE = {
   avatar: "/avatar.svg"
 } as const;
 
-const LINKS = [
-  { href: "/hub", label: "Mes Services", variant: "primary" as const },
-  { href: "/projects", label: "Projets", variant: "secondary" as const },
-  { href: "https://github.com/AJacquin", label: "GitHub", variant: "primary" as const },
-  { href: "/CV_Axel_Jacquin.pdf", label: "CV", variant: "secondary" as const, external: true as const }
-] as const;
-
 const TECHNOLOGIES = [
   "Verilog", "SystemVerilog", "C++", "Python", "Next.js", "TailwindCSS"
 ] as const;
@@ -50,29 +43,6 @@ export default function Home() {
         <p className="max-w-2xl space-y-2 text-foreground/70 text-lg">
           {PROFILE.description}
         </p>
-      </div>
-
-      {/* Quick Links */}
-      <div className="flex gap-4 flex-wrap justify-center">
-        {LINKS.map((link) => {
-          const className = `${STYLES.button.base} ${STYLES.button[link.variant]}`;
-          
-          return "external" in link ? (
-            <a
-              key={link.href}
-              href={link.href}
-              className={className}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.label}
-            </a>
-          ) : (
-            <Link key={link.href} href={link.href} className={className}>
-              {link.label}
-            </Link>
-          );
-        })}
       </div>
 
       {/* Technologies */}
