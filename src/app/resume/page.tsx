@@ -147,7 +147,7 @@ export default function CVPortfolio() {
           {/* SIDEBAR */}
           <aside className="md:col-span-4 lg:col-span-3 print:col-span-4 rounded-2xl overflow-hidden shadow-sm border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 flex flex-col h-full">
             {/* Name + role */}
-            <motion.div initial={{ opacity: 0, y: -8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="px-3 py-6 border-b border-neutral-200 dark:border-slate-700">
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="px-3 py-6 border-b border-neutral-200 dark:border-slate-700">
               <div className="flex items-center gap-4">
                 <div>
                   <h1 className="text-xl font-bold leading-tight">Axel Jacquin</h1>
@@ -187,8 +187,7 @@ export default function CVPortfolio() {
                         key={`${group}-${s}`}
                         className="px-3 py-1 text-xs rounded-full border border-neutral-300 dark:border-slate-600 bg-white dark:bg-slate-700 shadow-sm hover:shadow transition will-change-transform text-neutral-900 dark:text-slate-200"
                         initial={{ opacity: 0, y: 6 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.02 * i }}
                       >
                         {s}
@@ -251,8 +250,7 @@ export default function CVPortfolio() {
                       <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200 print:hidden" />
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: idx * 0.05 }}
                         className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-2 shadow-sm hover:shadow-md transition"
                       >
@@ -298,8 +296,7 @@ export default function CVPortfolio() {
                       <span className="absolute left-2.5 top-5 h-3 w-3 rounded-full bg-slate-900 dark:bg-slate-200 print:hidden" />
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: idx * 0.05 }}
                         className="rounded-xl border border-neutral-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 p-2 shadow-sm hover:shadow-md transition"
                       >
