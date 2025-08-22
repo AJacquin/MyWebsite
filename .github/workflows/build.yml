@@ -34,4 +34,4 @@ jobs:
           script: |
             cd C:\MyWebsite
             git pull MyWebsite main
-            docker compose up -d --build
+            docker compose up -d --build --no-cache
