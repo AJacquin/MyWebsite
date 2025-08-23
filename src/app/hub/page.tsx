@@ -61,16 +61,16 @@ const SERVICES = [
 
 // Contenu statique
 const CONTENT = {
-  title: "Mes sites",
+  title: "Mes serveurs",
   subtitle: "Tous hébergés chez moi, accessibles depuis n'importe où"
 } as const;
 
 // Classes CSS statiques
 const STYLES = {
-  container: "mx-auto max-w-7xl px-6 lg:px-8 space-y-8",
+  container: "mt-8 mx-auto max-w-7xl px-6 lg:px-8 space-y-8",
   title: "text-center text-base/7 font-semibold",
   subtitle: "mx-auto mt-2 max-w-2xl text-center text-3xl font-semibold tracking-tight sm:text-4xl",
-  grid: "grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+  grid: "mt-8 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
   card: "group relative overflow-hidden rounded-lg border transition-all duration-300 hover:scale-[1.02] hover:shadow-lg bg-slate-200 hover:bg-slate-300 border-slate-300 text-slate-900 hover:shadow-slate-900/5 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-slate-200 dark:hover:shadow-slate-200/5",
   cardContent: "p-6",
   cardHeader: "flex items-center gap-4",
