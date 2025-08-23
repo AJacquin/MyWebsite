@@ -48,7 +48,7 @@ export default function Home() {
       <div className="mt-8 flex flex-col items-center">
         <h1 className="text-center text-4xl font-semibold">Ce site</h1>
         <p className="text-center mt-4 text-foreground/70">
-          Ce site est voué à présenter mes projets, en me permettant d'explorer de nouvelles technologies et d'améliorer mes compétences.
+          Ce site est voué à présenter mes projets, en me permettant d&apos;explorer de nouvelles technologies et d&apos;améliorer mes compétences.
         </p>
         {/* Technologies */}
         <div className="mt-4">
