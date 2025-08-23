@@ -36,8 +36,6 @@ export default function Footer({ hideOnPrint }: FooterProps) {
         <a
           href={PROFILE.website}
           className={STYLES.link}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           © {currentYear} {PROFILE.name}
         </a>
