@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v0.1.10
+      - name: SSH proxy command
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
@@ -33,8 +33,5 @@ jobs:
           port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
             cd C:\MyWebsite
-            git pull MyWebsite main > deploy.log 2>&1
-            docker compose build --no-cache >> deploy.log 2>&1
-            docker compose down >> deploy.log 2>&1
-            docker compose up -d >> deploy.log 2>&1
-            type deploy.log
+            git pull MyWebsite main
+            docker compose up -d
