@@ -10,7 +10,7 @@ const PROFILE = {
 } as const;
 
 const TECHNOLOGIES = [
-  "Verilog", "SystemVerilog", "C++", "Python", "Next.js", "TailwindCSS"
+  "Next.js", "TailwindCSS", "Git", "Github Actions"
 ] as const;
 
 // Classes CSS statiques pour optimiser la compilation
