@@ -32,6 +32,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
+            whoami
             cd C:\MyWebsite
-            git pull MyWebsite main
+            git pull
+            docker compose build --no-cache
             docker compose up -d
