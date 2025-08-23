@@ -33,7 +33,12 @@ jobs:
           port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
             whoami
+            echo "1"
             cd C:\MyWebsite
+            echo "2"
             git pull
+            echo "3"
             docker compose build --no-cache
+            echo "4"
             docker compose up -d
+            echo "END"
