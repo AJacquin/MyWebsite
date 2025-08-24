@@ -24,8 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
-      - name: Debug DNS
-        run: nslookup ${{ secrets.SERVER_HOST }}
       - name: SSH proxy command
         uses: appleboy/ssh-action@v1
         with:
