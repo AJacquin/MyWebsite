@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          script: whoami & cd C:\MyWebsite & git pull & docker compose build & docker compose up -d
+          script: whoami & cd C:\MyWebsite & git pull & docker compose up -d --build
