@@ -9,7 +9,8 @@ const PROFILE = {
 
 const NAV_LINKS = [
   { href: "/resume", label: "CV" },
-  { href: "/hub", label: "Serveurs" }
+  { href: "/hub", label: "Serveurs" },
+  { href: "/projects", label: "Projets" }
 ] as const;
 
 // Classes CSS statiques

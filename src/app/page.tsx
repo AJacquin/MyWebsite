@@ -4,8 +4,8 @@ import PageLayout from "@/components/PageLayout";
 // Configuration statique pour éviter la recompilation
 const PROFILE = {
   name: "Axel Jacquin",
-  title: "Ingénieur Logiciel & FPGA",
-  description: "Passionné par le développement embarqué et web. Je construis des solutions innovantes en combinant hardware et software.",
+  title: "Ingénieur électronique numérique",
+  description: "Passionné par toutes les technologies. Je m'initie actuellement au web.",
   avatar: "/avatar.svg"
 } as const;
 
@@ -46,12 +46,12 @@ export default function Home() {
       
       {/* Ce site */}
       <div className="mt-8 flex flex-col items-center">
-        <h1 className="text-center text-4xl font-semibold">Ce site</h1>
-        <p className="text-center mt-4 text-foreground/70">
-          Ce site est voué à présenter mes projets, en me permettant d&apos;explorer de nouvelles technologies et d&apos;améliorer mes compétences.
+        <h2 className="p-6 font-semibold">Ce site</h2>
+        <p className="text-3xl font-semibold text-foreground/70">
+          Présenter mes projets, en améliorant mes compétences.
         </p>
         {/* Technologies */}
-        <div className="mt-4">
+        <div className="mt-8">
           <h3 className="text-center text-lg font-semibold">Technologies</h3>
           <div className="mt-2 flex flex-wrap justify-center gap-4">
             {TECHNOLOGIES.map((tech) => (
