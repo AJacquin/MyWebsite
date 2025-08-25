@@ -47,7 +47,7 @@ export default function Home() {
       {/* Ce site */}
       <div className="mt-8 flex flex-col items-center">
         <h2 className="p-6 font-semibold">Ce site</h2>
-        <p className="text-3xl font-semibold text-foreground/70">
+        <p className="text-center text-3xl font-semibold text-foreground/70">
           Présenter mes projets, en améliorant mes compétences.
         </p>
         {/* Technologies */}
